@@ -26,11 +26,13 @@
 - `analysis/aosp/bpfloader-sdk35-15-V-QPR1-24Q4.rc`
 - `analysis/aosp/netbpfload.35rc.refs_heads_main`
 - `analysis/aosp/netbpfload.rc.refs_heads_main`
-- `analysis/aosp/README.txt`（来源/提取说明）
 
 These files are Copyright (C) The Android Open Source Project and are licensed
-under the Apache License, Version 2.0. A copy of the license is in
-`LICENSES/Apache-2.0.txt`. Primary sources:
+under the Apache License, Version 2.0. `analysis/aosp/README.txt` is a local
+provenance note describing the extraction commands and upstream branches; it is
+not an AOSP source file and is retained as documentation.
+
+A copy of the license is in `LICENSES/Apache-2.0.txt`. Primary sources:
 
 - https://android.googlesource.com/platform/system/netd/
 - https://android.googlesource.com/platform/system/bpf/
