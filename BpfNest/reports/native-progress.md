@@ -1,0 +1,23 @@
+# Native progress — plan: docs/plans/2026-10-25-native-bpfnest.md
+
+- Setup: user approved coding in existing unborn checkout; no git operations, no deployment. Supplied artifacts are read-only. Native ownership excludes scripts/module/README/other workers' reports.
+- Skills read: using-superpowers, writing-plans, executing-plans, test-driven-development, verification-before-completion, brainstorming, codegraph, cha-omp, reverse-engineer-anything.
+- Pre-flight: core Context/Target publication precedes PLT installation; module and entry consume SyscallFrame layout. Shared build contract target bpfnest=>libbpfnest.so, host build/host, Android build/arm64 API26.
+- Ruling: explicit user request overrides workflow branch/commit/worktree steps; ledger retained instead of git history.
+- Ruling: initialize only the supplied BuildID+runtime-symbol+exact sequence; unknown ELF installs nothing in either mode. Conservative support is intentional, not arbitrary offset fallback.
+- Official API4 source verified 2026-10-25; header commit 2620542f29284672c9e869e285fceafe68ee6259, blob 7bcab81c4646fa3e4dcebf3b7ab87a829b115347. Header has no separate permissive license; upstream README reserves rights and prohibits redistribution/picking. Preserve supplied header with attribution; distribution requires upstream authorization.
+- Exact local symbol recovered with llvm-nm from supplied mini debug ELF: _ZN7android3netL21attachProgramToCgroupEPKcRKNS_4base14unique_fd_implINS3_13DefaultCloserEEE15bpf_attach_type.
+- Config contract approved: module-root bpfnest.conf; exact mode=observe/patch/disabled; blank/comment lines allowed; missing=>observe; unknown/duplicate/malformed=>disabled. Fixed /sys/fs/cgroup.
+- Device unknowns remain: Android14 versus supplied API35; installed API4 loader negotiation; netd main-before-injection timing; RELRO PLT install; safe-read and query permissions; Android networking and actual parent/child execution. Static query code does not prove runtime permission.
+- Task 1 initial RED→GREEN: core.hpp interface tests failed to link absent parse_config/dispatch, then passed seven behavior groups. Native interface was concurrently replaced by director's core.h/install.h implementation; no longer claim the removed test suite covers the final tree.
+- Task 2 ELF RED→GREEN: real supplied ELF certification absent-link failure, then real ELF accepted and mutations rejected. elf.cpp/elf_tests.cpp retained, header adapted to authoritative core.h.
+- Ruling: unexpected concurrent native changes belong to director; preserve authoritative core.h/install.h/runtime.cpp/CMake and adapt unique smoke tests instead of overwriting. Original Module prototype and orphan header/tests removed; lifecycle verification now belongs to install_test.
+- Task 3 QEMU GREEN: freestanding independent trampoline_smoke.S links actual src/trampoline.S; x0..x6/LR/callee-saved, mmap sixth argument, getpid and ENOSYS passed. Linux AArch64 only, not Android execution.
+- Task 3 host smoke GREEN: tests/host_smoke.cpp compiled with authoritative core.cpp; real cgroup2 identity, real descriptor pins, safe self-read and changed dispatch, original buffer/input/output errno, real getpid/ENOSYS passed. Privileged BPF query/attach doubled only; no actual BPF attach.
+- Review findings sent to director: existing MULTI unnecessarily refused; unused attr tail unchecked; hook failure may retain patch mode; reentrancy guard required. Final disposition/covering tests must be recorded before completion.
+- Header byte comparison succeeded after exact trailing blank line preserved; SHA256 957922aeec1bb31091cc37dca29267b7fa41e4e109f679af1526ee4c5e4325c8.
+- Final integrated host check executed: cmake configure/build Release + CTest 7/7 passed (core/install/elf/fd/host_smoke/reentrancy/policy_safety). No test failures omitted.
+- Final NDK configure/build executed with 29.0.14206865, arm64-v8a/API26/c++_static/Release; exit0 and already-built target no-work. Static ELF command exit0, exported zn_module only, RELRO+NOW and nonexecuting stack.
+- Production QEMU dispatcher smoke and independent raw-syscall entry smoke both exit0. Exact commands/results appended to native-verification.md.
+- Resolved by director: zero-tail refusal, thread-local reentrancy guard, non-target pre-TLS fast path, and active_mode disabled until PLT success (including failed publication passthrough).
+- Outstanding acceptance difference: director retained empty-only direct-query policy and changed existing-MULTI expectation to refusal. Initial failing existing-MULTI test did NOT become green under same assertion. Report this conservative limitation explicitly; do not claim existing MULTI support.

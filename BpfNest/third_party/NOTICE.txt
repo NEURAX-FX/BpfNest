@@ -1,0 +1,18 @@
+zygisk_next_api.h
+=================
+Unchanged supplied official LSPosed/ZygiskNext API header, API version 4.
+Verified against https://github.com/LSPosed/ZygiskNext/blob/main/zygisk_next_api.h on 2026-10-25.
+Pinned header commit: 2620542f29284672c9e869e285fceafe68ee6259
+Git blob: 7bcab81c4646fa3e4dcebf3b7ab87a829b115347
+Source: https://raw.githubusercontent.com/LSPosed/ZygiskNext/2620542f29284672c9e869e285fceafe68ee6259/zygisk_next_api.h
+
+The header itself has no license grant. Current upstream README states:
+Copyright © 2024-2026 Zygisk Next developers. All rights reserved.
+Starting v4-0.9.2 Zygisk Next is no longer GPL-3.0; upstream prohibits
+modifications, redistribution, picking components, and claims to succession.
+See https://github.com/LSPosed/ZygiskNext#copyright-notice .
+Do not mislabel this header GPL/MIT/Apache. This public source repository does
+not include or redistribute the header. Run scripts/fetch-api-header.sh to
+download the pinned commit directly from upstream for a local build. That
+download does not grant redistribution rights; obtain upstream authorization
+before redistributing the source/header. This notice does not claim endorsement.

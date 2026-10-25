@@ -1,0 +1,6 @@
+id=bpfnest
+name=BpfNest
+version=v0.1.0
+versionCode=100
+author=Neurax08
+description=Observe-first netd cgroup BPF attach experiment for ZygiskNext API4. Patch is NOT production/restart-safe.

@@ -1,0 +1,28 @@
+BpfNest module package
+======================
+
+Source and license (GPL-3.0-only):
+https://github.com/NEURAX-FX/BpfNest
+
+This package is not an endorsement by ZygiskNext or Magisk.
+
+zygisk_next_api.h: official LSPosed/ZygiskNext API4 header, commit
+2620542f29284672c9e869e285fceafe68ee6259. The header has no license grant.
+Upstream states Copyright (c) 2024-2026 Zygisk Next developers, all rights
+reserved, with redistribution restrictions. Do not label it GPL/MIT/Apache.
+This package and the public source repository do not contain the header; it is
+a build-time input fetched from upstream. See ../third_party/NOTICE.txt in the
+source tree and https://github.com/LSPosed/ZygiskNext#copyright-notice .
+Obtain upstream authorization before source/header redistribution. Local
+build/package success is not a redistribution-rights determination.
+
+META-INF/com/google/android/update-binary is the unmodified Magisk v28.1
+scripts/module_installer.sh from:
+https://raw.githubusercontent.com/topjohnwu/Magisk/v28.1/scripts/module_installer.sh
+Magisk is licensed under GPL-3.0; corresponding source and license:
+https://github.com/topjohnwu/Magisk/tree/v28.1
+https://github.com/topjohnwu/Magisk/blob/v28.1/LICENSE
+The installer executes Magisk's actual install_module entry, not a fake
+successful updater. customize.sh follows the manager-only/architecture
+checks used in the supplied official ZygiskNext module sample; service and
+sepolicy extraction were intentionally omitted. No source is relicensed here.

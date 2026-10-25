@@ -1,0 +1,31 @@
+# Local build outputs and indexes
+BpfNest/build/
+BpfNest/dist/
+BpfNest/.codegraph/
+__pycache__/
+*.pyc
+
+# Device firmware images: not redistributed (see THIRD_PARTY_NOTICES.md)
+/netd
+/libbpf_android.so
+/libnetd_updatable.so
+/analysis/*.debugdata.xz
+/analysis/*.minidebug.elf
+
+# Upstream material used only as a local build input or reference.
+# The ZygiskNext header has no redistribution grant; fetch it with
+# BpfNest/scripts/fetch-api-header.sh. The sample, README and tree metadata
+# are upstream copies and are not part of this repository.
+/BpfNest/third_party/zygisk_next_api.h
+/analysis/zygisk_next_api.main.h
+/analysis/ZygiskNext-README.md
+/analysis/sample/
+/analysis/zn-tree.json
+
+# Empty/aborted AOSP extraction placeholders (no content to publish)
+/analysis/Connectivity-bpf-Android.bp
+/analysis/aosp/BpfUtils.android15.h
+
+# OS/editor noise
+.DS_Store
+*.swp
