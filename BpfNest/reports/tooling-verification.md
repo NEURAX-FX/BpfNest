@@ -25,6 +25,8 @@
 
 各有旁置 `.sha256`；ZIP内 SHA256SUMS覆盖除自身外的每个文件。旧 arm64-v8a.zip、旧外部SHA256SUMS及旧so已清理，dist仅保留最终ZIP/so与各自哈希。
 
+构建产物保留 `.debug_line` 等调试信息，绝对源码路径会改变 `libbpfnest.so`/ZIP 的哈希；上表对应当前发布包。公开 clone 的干净构建实测 `.text`/`.rodata`/`.data` 与本地构建相同，host 7/7、Android/QEMU/打包通过，但因路径不同 ZIP 哈希不同。发布资产完整性以旁置 `.sha256` 为准。
+
 ZIP根目录：module.prop、customize.sh、bpfnest.conf、zn_modules.txt、libbpfnest.so、NOTICE.txt、SHA256SUMS、META-INF真实Magisk安装入口/marker。作用域精确 `path=/system/bin/netd libbpfnest.so`，默认mode=observe；无service/post-fs-data/sepolicy脚本。
 
 ## 评审与限制
